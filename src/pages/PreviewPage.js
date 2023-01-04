@@ -13,6 +13,8 @@ import { Container } from '@mui/material'
 import itemData from '../components/item'
 // import ModalEdit from './Edit'
 import { Button, FormControl, Input, InputLabel } from '@mui/material'
+import axios from 'axios'
+import api from '../config'
 
 
 export default function PreviewPage() {
@@ -67,9 +69,15 @@ export default function PreviewPage() {
 //     setTodo('')
 //   }
 
-  function handleEditFormSubmit(e) {
+async  function handleEditFormSubmit(e) {
     e.preventDefault()
+const {data}=await api.put('/orde_items/:id',{
 
+},{
+  param:{
+
+  }
+})
     handleUpdateTodo(currentItem.id, currentItem)
   }
 
@@ -78,6 +86,13 @@ export default function PreviewPage() {
       return todo.id !== id
     })
     setTodos(removeItem)
+
+    // 
+    // var axios = require('axios')
+
+    
+
+   
   }
 
   // function to edit a todo item

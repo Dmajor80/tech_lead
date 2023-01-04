@@ -1,4 +1,4 @@
-import * as React from 'react'
+import  React, { useContext, useEffect, useState } from 'react'
 import ImageList from '@mui/material/ImageList'
 import ImageListItem from '@mui/material/ImageListItem'
 import ImageListItemBar from '@mui/material/ImageListItemBar'
@@ -6,14 +6,46 @@ import ListSubheader from '@mui/material/ListSubheader'
 import IconButton from '@mui/material/IconButton'
 import InfoIcon from '@mui/icons-material/Info'
 import Pagination from '@mui/material/Pagination'
-import { Container } from '@mui/material'
-// import DeleteIcon from '@mui/icons-material/Delete'
-// import EditIcon from '@mui/icons-material/Edit'
+import { Container, Typography } from '@mui/material'
 import itemData from '../components/item'
 import { useNavigate } from 'react-router-dom'
+import api from '../config'
+import { UserContext } from '../Context'
+ 
+
 
 export default function Home() {
+const userContext = useContext(UserContext);
+  const [order, setOrder] = useState([])
     const navigate = useNavigate()
+
+  
+
+    const handleData = async () =>{
+
+      try {
+        const { data } = await  api.get('/order_items',{
+        })
+        console.log(data, 'data')
+        if(!data.success)
+        navigate('/home')
+        //todo
+        //populate UI
+        setOrder(data.data)
+      } catch (error) {
+        console.log(error.response.data.error)
+      }
+    }
+
+    
+    useEffect(() => {
+      console.log(UserContext);
+      if(!userContext.user_city || !userContext.user_state){
+      navigate('/')
+
+    }else handleData()
+    }, [])
+    
 
   return (
     <div className=''>
@@ -22,37 +54,44 @@ export default function Home() {
         //  sx={{ width: 500, height: 450 }}
         >
           <ImageListItem key='Subheader' cols={4}>
-            <ListSubheader component='div'>December</ListSubheader>
+            <ListSubheader component='div'>Orders</ListSubheader>
           </ImageListItem>
-          {itemData.map((item) => (
-            <ImageListItem key={item.img}>
-              <img
+          {
+            order?.map((item) => (
+              <ImageListItem key={item.img}>
+                {/* <img
                 src={`${item.img}?w=248&fit=crop&auto=format`}
                 srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
                 alt={item.title}
                 loading='lazy'
-              />
-              <ImageListItemBar
-                title={item.title}
-                subtitle={item.author}
-                actionIcon={
-                  <IconButton
-                    sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
-                    aria-label={`info about ${item.title}`}
-                  >
-                    <InfoIcon 
-                    // onClick={() => navigate(`/post/${item?._id}`)} 
-                    onClick={() => navigate(`/preview`)} 
-                    />
-                    {/* <DeleteIcon /> */}
-                    {/* <EditIcon /> */}
-                  </IconButton>
-                }
-              />
-            </ImageListItem>
-          ))}
+              /> */}
+                <Typography>{item.date}</Typography>
+                <Typography>{item.id}</Typography>
+                <Typography>{item.price}</Typography>
+                <Typography>{item.product_category}</Typography>
+                <Typography>{item.product_id}</Typography>
+
+                <ImageListItemBar
+                  title={item.title}
+                  subtitle={item.author}
+                  actionIcon={
+                    <IconButton
+                      sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
+                      aria-label={`info about ${item.title}`}
+                    >
+                      <InfoIcon
+                        // onClick={() => navigate(`/post/${item?._id}`)}
+                        onClick={() => navigate(`/preview`)}
+                      />
+                      
+                    </IconButton>
+                  }
+                />
+              </ImageListItem>
+            ))
+          }
         </ImageList>
-        <Pagination count={10} color='primary' />
+        {/* <Pagination count={10} color='primary' /> */}
       </Container>
     </div>
   )
