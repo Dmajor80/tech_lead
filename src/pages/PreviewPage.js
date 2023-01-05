@@ -9,7 +9,7 @@ import IconButton from '@mui/material/IconButton'
 // import Pagination from '@mui/material/Pagination'
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import { Container } from '@mui/material'
+import { Container, TextField } from '@mui/material'
 import itemData from '../components/item'
 // import ModalEdit from './Edit'
 import { Button, FormControl, Input, InputLabel } from '@mui/material'
@@ -36,62 +36,29 @@ export default function PreviewPage() {
     localStorage.setItem('todos', JSON.stringify(itemData))
   }, [itemData])
 
-  // delete item
-//   const removeItem = (index) => {
-//     const newItem = [...item]
-//     newItem.splice(index, 1)
-//     setItem(newItem)
-//   }
-  // new
-//   function handleInputChange(e) {
-//     setTodo(e.target.value)
-//   }
 
-  function handleEditInputChange(e) {
+  const  handleEditInputChange = (e) => {
     // set the new state value to what's currently in the edit input box
     setCurrentItem({ ...currentItem, text: e.target.value })
     console.log(currentItem)
   }
 
-//   function handleFormSubmit(e) {
-//     e.preventDefault()
 
-//     if (todo !== '') {
-//       setTodos([
-//         ...todos,
-//         {
-//           id: todos.length + 1,
-//           text: todo.trim(),
-//         },
-//       ])
-//     }
-
-//     setTodo('')
-//   }
-
-async  function handleEditFormSubmit(e) {
+  const handleEditFormSubmit = async (e) => {
     e.preventDefault()
-const {data}=await api.put('/orde_items/:id',{
+    const {data}=await api.put('/orde_items/:id',{
 
-},{
-  param:{
+    },{
+           param:{}
+    })
+       handleUpdateTodo(currentItem.id, currentItem)
+}
 
-  }
-})
-    handleUpdateTodo(currentItem.id, currentItem)
-  }
-
-  function handleDeleteClick(id) {
+  const handleDeleteClick = async(id) => {
     const removeItem = todos.filter((todo) => {
       return todo.id !== id
     })
     setTodos(removeItem)
-
-    // 
-    // var axios = require('axios')
-
-    
-
    
   }
 
@@ -146,49 +113,33 @@ const {data}=await api.put('/orde_items/:id',{
                   name='editTodo'
                   type='text'
                   placeholder='Edit todo'
-                //   value={currentItem.text}
+                  //   value={currentItem.text}
                   onChange={handleEditInputChange}
                 />
+                <TextField
+                  id='outlined-error'
+                  label='Username'
+                  // helpterText={message}
+                  onChange={(e) => {
+                    // setvalues({ ...values, [e.target.name]: e.target.value })
+                  }}
+                  name='username'
+                />
+                <TextField
+                  id='outlined-error'
+                  label='Username'
+                  // helpterText={message}
+                  onChange={(e) => {
+                    // setvalues({ ...values, [e.target.name]: e.target.value })
+                  }}
+                  name='username'
+                />
                 {/* here we added an "update" button element - use the type="submit" on the button which will still submit the form when clicked using the handleEditFormSubmit function */}
-                <button type='submit'>Update</button>
+                <Button type='submit'>Update</Button>
                 {/* here we added a "Cancel" button to set isEditing state back to false which will cancel editing mode */}
-                <button onClick={() => setIsEditing(false)}>Cancel</button>
+                <Button onClick={() => setIsEditing(false)}>Cancel</Button>
               </form>
-              <FormControl onSubmit={handleEditFormSubmit}>
-                <div className=''>
-                  <InputLabel htmlFor='my-'>Email address</InputLabel>
-                  <Input
-                    // id='my-input'
-                    placeholder='Edit todo'
-                    // aria-describedby='my-helper-text'
-                    // value={currentItem.text} 
-                    onChange={handleEditInputChange}
-                  />
-                </div>
-                <div className=''>
-                  <InputLabel htmlFor='my'>Email address</InputLabel>
-                  <Input
-                    // id='my-input'
-                    placeholder='Edit todo'
-                    // aria-describedby='my-helper-text'
-                    // value={currentItem.text}
-                    onChange={handleEditInputChange}
-                  />
-                </div>
-                <div className=''>
-                  <InputLabel htmlFor='my-input'>Email address</InputLabel>
-                  <Input
-                    // id='my-input'
-                    placeholder='Edit todo'
-                    // aria-describedby='my-helper-text'
-                    // value={currentItem.text}
-                    onChange={handleEditInputChange}
-                  />
-                </div>
-                <div className=''>
-                  <Button type='submit'>Edit</Button>
-                </div>
-              </FormControl>
+              
             </div>
           ) : (
             <div className=''>

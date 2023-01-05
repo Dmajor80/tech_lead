@@ -2,15 +2,12 @@ import { Button,  TextField } from '@mui/material'
 import React, {  useContext, useState } from 'react'
 import Box from '@mui/material/Box'
 import api from '../config'
-// import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { UserContext } from '../Context'
-// import axios from '../config'
 
 
 export default function Login() {
 
-    //  const [name, setName] = useState()
      const [values, setvalues] = useState({username:'', password:'', })
      const [message, setMessage] = useState('')
      const navigate = useNavigate()
@@ -40,10 +37,6 @@ export default function Login() {
 
 }
      
-  
-
-    
-
   return (
     <div>
      
@@ -57,16 +50,12 @@ export default function Login() {
         autoComplete='off'
         onSubmit={handleSubmit}
       >
-        {/* <form action='' onSubmit={handleSubmit}> */}
           <div>
             <TextField
             //   error
               id='outlined-error'
               label='Username'
-              // defaultValue='Hello World'
               helpterText={message}
-            //   {!message?<helpterText =`${message}`>:""}
-            // {message?  <>helpterText =`${message}`</>:""}
               onChange={(e) => {
                 setvalues({ ...values, [e.target.name]: e.target.value })
               }}
