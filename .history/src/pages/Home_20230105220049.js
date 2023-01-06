@@ -84,7 +84,7 @@ export default function Home() {
   const handleEditSubmit = async (e) => {
     e.preventDefault()
     const { data } = await api.put(`/account`, {
-
+      
     },{
       params: {
         id:values.pro_id,
@@ -195,7 +195,6 @@ export default function Home() {
                           className=''
                           id={item.id}
                           onClick={(e) => handleDelete(e)}
-                          startIcon={<DeleteIcon />}
                         >
                           {/* <DeleteIcon
                           /> */}

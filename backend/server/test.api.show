@@ -1,0 +1,58 @@
+{{baseUrl}}=http://localhost:5000/api/v1
+
+# STATUS
+GET
+{{baseUrl}}/status
+{
+	"msg": "Yes!... Welcome, enjoy this API"
+}
+
+# LOGIN
+POST
+{{baseUrl}}/auth
+
+{
+	"success": true,
+	"msg": "Login successfull",
+	"user": {
+		"seller_city": "campinas",
+		"seller_state": "SP"
+	},
+	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM0NDJmODk1OWE4NGRlYTdlZTE5N2M2MzJjYjJkZjE1IiwiaWF0IjoxNjcyMDc4ODg4LCJleHAiOjE2NzIwODI0ODh9.JKt8yYOYfdLwVQ41gtzB9vd4g3gNCudCJcsvT7IEE0k",
+	"refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM0NDJmODk1OWE4NGRlYTdlZTE5N2M2MzJjYjJkZjE1IiwiaWF0IjoxNjcyMDc4ODg4LCJleHAiOjE2NzIwODYwODh9.BYqBXHfW-8MWp7B0I87hisvjaN5MZi7VAMBxDubACGo"
+}
+
+# GET ORDERS
+GET
+{{baseUrl}}/order_items
+AUTH REQUIRED
+{
+	"data": [
+		{
+			"id": "1",
+			"product_id": "ffb64e34a37740dafb6c88f1abd1fa61",
+			"price": "106.20",
+			"date": "2017-08-25 20:50:19"
+		},
+		{
+			"id": "1",
+			"product_id": "f4621f8ad6f54a2e3c408884068be46d",
+			"price": "101.70",
+			"date": "2017-05-11 16:25:11"
+		},
+		{
+			"id": "2",
+			"product_id": "325a06bcce0da45b7f4ecf2797dd40e4",
+			"price": "10.80",
+			"date": "2017-09-05 12:50:19"
+		}
+	],
+	"total": 3,
+	"limit": 20
+}
+
+
+# GET ORDERS BY ID
+GET
+{{baseUrl}}/order_items/:id
+AUTH REQUIRED

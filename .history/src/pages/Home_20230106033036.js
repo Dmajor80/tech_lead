@@ -191,7 +191,7 @@ export default function Home() {
                           // onClick={() => navigate(`/post/${item?._id}`)}
                           onClick={() => navigate(`/preview`)}
                         />
-                        <div
+                        <Button
                           className=''
                           id={item.id}
                           onClick={(e) => handleDelete(e)}
@@ -199,8 +199,9 @@ export default function Home() {
                         >
                           {/* <DeleteIcon
                           /> */}
-                          Delete
-                        </div>
+                          {/* Delete */}
+                        </Button>
+                        
                         <EditIcon onClick={() => handleEditClick(values)} />
                       </IconButton>
                     }
