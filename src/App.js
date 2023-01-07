@@ -11,6 +11,7 @@ import NotFound from './pages/NotFound'
 import Login from './pages/Login';
 import {  useState } from 'react';
 import { UserContext } from './Context';
+import Account from './pages/Account';
 
 function App() {
   
@@ -28,6 +29,7 @@ function App() {
         <Route path='/home' element={<Home />} />
 
         <Route path='/preview' element={<PreviewPage />} />
+        <Route path='/account' element={<Account />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
       </UserContext.Provider>
