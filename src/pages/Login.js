@@ -20,10 +20,10 @@ export default function Login() {
           const { data  } = await api.post('/auth', {
             ...values,
           })
-          console.log(data);
           if(data.success){
             userContext.user_city=data.user.seller_city;
             userContext.user_state=data.user.seller_state;
+            console.log(userContext)
             navigate('/home')
           }else{
             //display error

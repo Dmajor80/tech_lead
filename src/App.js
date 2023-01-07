@@ -1,12 +1,11 @@
-// import logo from './logo.svg';
-// import './App.css';
+
 import '@fontsource/roboto/300.css'
 import '@fontsource/roboto/400.css'
 import '@fontsource/roboto/500.css'
 import '@fontsource/roboto/700.css'
 import Home from './pages/Home';
 import { Routes, Route } from 'react-router-dom'
-import PreviewPage from './pages/PreviewPage';
+// import PreviewPage from './pages/PreviewPage';
 import NotFound from './pages/NotFound'
 import Login from './pages/Login';
 import {  useState } from 'react';
@@ -28,7 +27,7 @@ function App() {
         <Route path='/' element={<Login />} />
         <Route path='/home' element={<Home />} />
 
-        <Route path='/preview' element={<PreviewPage />} />
+        {/* <Route path='/preview' element={<PreviewPage />} /> */}
         <Route path='/account' element={<Account />} />
         <Route path='*' element={<NotFound />} />
       </Routes>

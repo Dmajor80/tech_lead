@@ -1,7 +1,7 @@
 {
   "_type": "export",
   "__export_format": 4,
-  "__export_date": "2022-12-28T01:48:46.134Z",
+  "__export_date": "2023-01-07T07:38:40.118Z",
   "__export_source": "insomnia.desktop.app:v2022.7.0",
   "resources": [
     {
@@ -40,7 +40,7 @@
     {
       "_id": "req_d2360433c734440c884c96e03c75d238",
       "parentId": "wrk_ba934dd995e5434ba3cf6b7c526acd00",
-      "modified": 1672184478536,
+      "modified": 1672306141168,
       "created": 1672184437687,
       "url": "{{baseUrl}}/order_items",
       "name": "Get Orders",
@@ -49,7 +49,10 @@
       "body": {},
       "parameters": [],
       "headers": [],
-      "authentication": { "type": "bearer", "token": "{{bearerToken}}" },
+      "authentication": {
+        "type": "bearer",
+        "token": "{{bearerToken}}"
+      },
       "metaSortKey": -1672146799041.5,
       "isPrivate": false,
       "settingStoreCookies": true,
@@ -63,7 +66,7 @@
     {
       "_id": "req_f2044e7f217043029919c38b1c0717ec",
       "parentId": "wrk_ba934dd995e5434ba3cf6b7c526acd00",
-      "modified": 1672185960641,
+      "modified": 1672309197055,
       "created": 1672185894945,
       "url": "{{baseUrl}}/order_items",
       "name": "Delete Orders By ID",
@@ -74,12 +77,15 @@
         {
           "id": "pair_c5e45b74777244f9b3c74609672e39cf",
           "name": "id",
-          "value": "1234",
+          "value": "51c6d2f460589fa7b65f2da51e860206",
           "description": ""
         }
       ],
       "headers": [],
-      "authentication": { "type": "bearer", "token": "{{bearerToken}}" },
+      "authentication": {
+        "type": "bearer",
+        "token": "{{bearerToken}}"
+      },
       "metaSortKey": -1672128068150.25,
       "isPrivate": false,
       "settingStoreCookies": true,
@@ -93,7 +99,7 @@
     {
       "_id": "req_cedb126bd2ca4f7295a34170757123a5",
       "parentId": "wrk_ba934dd995e5434ba3cf6b7c526acd00",
-      "modified": 1672184391122,
+      "modified": 1673076538830,
       "created": 1672184323701,
       "url": "{{baseUrl}}/auth",
       "name": "Login",
@@ -101,10 +107,15 @@
       "method": "POST",
       "body": {
         "mimeType": "application/json",
-        "text": "{\n\t\"username\":\"3442f8959a84dea7ee197c632cb2df15\",\n\t\"password\":\"13023\"\n}"
+        "text": "{\n\t\"username\":\"768a86e36ad6aae3d03ee3c6433d61df\",\n\t\"password\":\"01529\"\n}"
       },
       "parameters": [],
-      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
       "authentication": {},
       "metaSortKey": -1672109337259,
       "isPrivate": false,
@@ -119,30 +130,92 @@
     {
       "_id": "req_956883ac78bf486aa9e58a27b57b68ad",
       "parentId": "wrk_ba934dd995e5434ba3cf6b7c526acd00",
-      "modified": 1672190641757,
+      "modified": 1673077076413,
       "created": 1672186920071,
       "url": "{{baseUrl}}/account",
       "name": "Update Account",
-      "description": "",
+      "description": "### Allow user to update account details\n\n\n<!-- RESPONSE-->\n{\n\t\"success\": true,\n\t\"msg\": \"Update was successful\",\n\t\"seller\": {\n\t\t\"seller_city\": \"campinas \",\n\t\t\"seller_state\": \"SP w5\"\n\t}\n}\n<!--ENDRESPONSE-->",
       "method": "PUT",
-      "body": { "mimeType": "application/json", "text": "" },
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\t\"seller_city\": \"campinas \",\n\t\t\"seller_state\": \"SP w5\"\n}"
+      },
       "parameters": [
         {
           "id": "pair_198fb09eb0b245e5b2c094c8efa14925",
           "name": "city",
           "value": "bonny",
-          "description": ""
+          "description": "",
+          "disabled": true
         },
         {
           "id": "pair_0c1180bb0f73427887d00dd82ce0130d",
           "name": "state",
           "value": "heresdf",
-          "description": ""
+          "description": "",
+          "disabled": true
         }
       ],
-      "headers": [{ "name": "Content-Type", "value": "application/json" }],
-      "authentication": { "type": "bearer", "token": "{{bearerToken}}" },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{bearerToken}}"
+      },
       "metaSortKey": -1672071875476.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_341814a0bb9d40c6a6f6e2b2bd86cb69",
+      "parentId": "wrk_ba934dd995e5434ba3cf6b7c526acd00",
+      "modified": 1673018192935,
+      "created": 1673007341692,
+      "url": "{{baseUrl}}/order_items/product",
+      "name": "Update product",
+      "description": "",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"product_category_name\": \"esporte_lazer a 2\",\n\t\"productId\":\"c4c7585167f8d6dc4ccc0b38f0d820ca\"\n}"
+      },
+      "parameters": [
+        {
+          "id": "pair_198fb09eb0b245e5b2c094c8efa14925",
+          "name": "",
+          "value": "",
+          "description": "",
+          "disabled": true
+        },
+        {
+          "id": "pair_0c1180bb0f73427887d00dd82ce0130d",
+          "name": "productId",
+          "value": "c4c7585167f8d6dc4ccc0b38f0d820ca",
+          "description": "",
+          "disabled": true
+        }
+      ],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{bearerToken}}"
+      },
+      "metaSortKey": -1672053144585.25,
       "isPrivate": false,
       "settingStoreCookies": true,
       "settingSendCookies": true,
@@ -155,14 +228,21 @@
     {
       "_id": "env_71c2e6aa4ed1b9e6bead77681e293b517e1638c6",
       "parentId": "wrk_ba934dd995e5434ba3cf6b7c526acd00",
-      "modified": 1672191038093,
+      "modified": 1673076550012,
       "created": 1672184171287,
       "name": "Base Environment",
       "data": {
-        "baseUrl": "https://leadtask.onrender.com/api/v1",
-        "bearerToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM0NDJmODk1OWE4NGRlYTdlZTE5N2M2MzJjYjJkZjE1IiwiaWF0IjoxNjcyMTg4MjQ0LCJleHAiOjE2NzIxOTE4NDR9.y6B974NHOQEf2vJz0jggxV_B8e-lXIjY6mLImU7KQWw"
+        "baseUrl": "http://localhost:5000/api/v1",
+        "baseUrl2": "https://leadtask.onrender.com/api/v1",
+        "bearerToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc2OGE4NmUzNmFkNmFhZTNkMDNlZTNjNjQzM2Q2MWRmIiwiaWF0IjoxNjczMDc2NTQwLCJleHAiOjE2NzMwODAxNDB9.LMwR-2qi-VPDqb2vVG7---21OfaoT7zzKB4nRt3Vsng"
       },
-      "dataPropertyOrder": { "&": ["baseUrl", "bearerToken"] },
+      "dataPropertyOrder": {
+        "&": [
+          "baseUrl",
+          "baseUrl2",
+          "bearerToken"
+        ]
+      },
       "color": null,
       "isPrivate": false,
       "metaSortKey": 1672184171288,
@@ -171,23 +251,41 @@
     {
       "_id": "jar_71c2e6aa4ed1b9e6bead77681e293b517e1638c6",
       "parentId": "wrk_ba934dd995e5434ba3cf6b7c526acd00",
-      "modified": 1672188244146,
+      "modified": 1673076540229,
       "created": 1672184171298,
       "name": "Default Jar",
       "cookies": [
         {
           "key": "jwt",
-          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM0NDJmODk1OWE4NGRlYTdlZTE5N2M2MzJjYjJkZjE1IiwiaWF0IjoxNjcyMTg4MjQ0LCJleHAiOjE2NzIxOTE4NDR9.y6B974NHOQEf2vJz0jggxV_B8e-lXIjY6mLImU7KQWw",
-          "expires": "2022-12-28T01:44:04.000Z",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc2OGE4NmUzNmFkNmFhZTNkMDNlZTNjNjQzM2Q2MWRmIiwiaWF0IjoxNjczMDc2NTQwLCJleHAiOjE2NzMwODAxNDB9.LMwR-2qi-VPDqb2vVG7---21OfaoT7zzKB4nRt3Vsng",
+          "expires": "2023-01-07T08:29:00.000Z",
           "maxAge": 3600,
           "domain": "localhost",
           "path": "/",
           "secure": true,
-          "extensions": ["SameSite=None"],
+          "extensions": [
+            "SameSite=None"
+          ],
           "hostOnly": true,
           "creation": "2022-12-27T23:39:54.716Z",
-          "lastAccessed": "2022-12-28T00:44:04.145Z",
-          "id": "6040149500787646"
+          "lastAccessed": "2023-01-07T07:29:00.228Z",
+          "id": "34615862840004086"
+        },
+        {
+          "key": "jwt",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM0NDJmODk1OWE4NGRlYTdlZTE5N2M2MzJjYjJkZjE1IiwiaWF0IjoxNjcyMjk4NDEwLCJleHAiOjE2NzIzMDIwMTB9.5H-AGKit2YWqnPeOPJQyeuk4L9RUxnVtef-AacB1OmQ",
+          "expires": "2022-12-29T08:20:10.000Z",
+          "maxAge": 3600,
+          "domain": "leadtask.onrender.com",
+          "path": "/",
+          "secure": true,
+          "extensions": [
+            "SameSite=None"
+          ],
+          "hostOnly": true,
+          "creation": "2022-12-29T04:53:09.779Z",
+          "lastAccessed": "2022-12-29T07:20:09.494Z",
+          "id": "8707198972330128"
         }
       ],
       "_type": "cookie_jar"

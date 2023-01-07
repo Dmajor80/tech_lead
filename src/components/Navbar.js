@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, { useContext, useEffect } from 'react'
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
@@ -12,11 +12,12 @@ import Button from '@mui/material/Button'
 import Tooltip from '@mui/material/Tooltip'
 import MenuItem from '@mui/material/MenuItem'
 import AdbIcon from '@mui/icons-material/Adb'
+import { Link, useNavigate } from 'react-router-dom'
+import { UserContext } from '../Context'
 
-const pages = ['Products', ]
-const settings = [ 'Account', 'Logout']
 
 function Navbar() {
+  const userContext = useContext(UserContext)
   const [anchorElNav, setAnchorElNav] = React.useState(null)
   const [anchorElUser, setAnchorElUser] = React.useState(null)
 
@@ -34,12 +35,17 @@ function Navbar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null)
   }
-
+  const navigate = useNavigate();
+useEffect(()=>{
+  if(!userContext.user_city || !userContext.user_state)
+  navigate("/home")
+},[])
   return (
     <AppBar position='static'>
       <Container maxWidth='xl'>
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          {/* <Link to='/' ></Link> */}
           <Typography
             variant='h6'
             noWrap
@@ -88,14 +94,15 @@ function Navbar() {
               }}
             >
               {/* {pages.map((page) => ( */}
-                <MenuItem 
+              <MenuItem
                 // key={page}
-                 onClick={handleCloseNavMenu}>
-                  <Typography textAlign='center'>
-                    {/* {page} */}
-                    Product
-                 </Typography>
-                </MenuItem>
+                onClick={handleCloseNavMenu}
+              >
+                <Typography textAlign='center'>
+                  {/* {page} */}
+                  <Link to='/home'>Product</Link>
+                </Typography>
+              </MenuItem>
               {/* ))} */}
             </Menu>
           </Box>
@@ -120,15 +127,16 @@ function Navbar() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {/* {pages.map((page) => ( */}
-              <Button
-                // key={page}
-                href='/home'
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {/* {page} */}
-                Product
-              </Button>
+
+            <Button
+              // key={page}
+              // href='/home'
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: 'white', display: 'block' }}
+            >
+              {/* {page} */}
+              <Link to='/home'>Product</Link>
+            </Button>
             {/* ))} */}
           </Box>
 
@@ -155,12 +163,14 @@ function Navbar() {
               onClose={handleCloseUserMenu}
             >
               {/* {settings.map((Account) => ( */}
-                <MenuItem 
-                // key={Account} 
-                onClick={handleCloseUserMenu}>
+              <MenuItem
+                // key={Account}
+                onClick={handleCloseUserMenu}
+              >
+                <Link to='/account'>
                   <Typography
-                    component='a'
-                    href='/account'
+                    // or here?
+
                     sx={{
                       mr: 2,
                       display: { xs: 'none', md: 'flex' },
@@ -175,7 +185,8 @@ function Navbar() {
                     {/* {Account} */}
                     Account
                   </Typography>
-                </MenuItem>
+                </Link>
+              </MenuItem>
               {/* ))} */}
             </Menu>
           </Box>

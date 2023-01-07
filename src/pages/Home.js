@@ -4,8 +4,6 @@ import ImageListItem from '@mui/material/ImageListItem'
 import ImageListItemBar from '@mui/material/ImageListItemBar'
 import ListSubheader from '@mui/material/ListSubheader'
 import IconButton from '@mui/material/IconButton'
-// import InfoIcon from '@mui/icons-material/Info'
-// import Pagination from '@mui/material/Pagination'
 import {  Button,  TextField, Typography } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import api from '../config'
@@ -16,10 +14,8 @@ import Navbar from '../components/Navbar'
 import Grid from '@mui/material/Grid'
 
  
-
-
 export default function Home() {
-  const userContext = useContext(UserContext)
+  const userContext = useContext(UserContext) 
   const [order, setOrder] = useState([])
   const navigate = useNavigate()
   const [isEditing, setIsEditing] = useState(false)
@@ -71,8 +67,6 @@ export default function Home() {
       (curr) =>curr.id===pro_id
       )
       setProId(pro_id);
-
-    
     setIsEditing(true)
     setvalues(findProduct)
   }
@@ -95,7 +89,7 @@ export default function Home() {
   }
 
   useEffect(() => {
-    console.log(UserContext)
+    console.log(userContext);
     if (!userContext.user_city || !userContext.user_state) {
       navigate('/')
     } else {
@@ -118,7 +112,6 @@ export default function Home() {
       >
         {isEditing ? (
           <div className='text-black'>
-            {/* {order?.map()} */}
             <form onSubmit={handleEditSubmit}>
               <Typography>Edit Orders</Typography>
 
@@ -129,7 +122,7 @@ export default function Home() {
                 name='product_category_name'
                 onChange={(e) => {
                   setvalues({ ...values, [e.target.name]: e.target.value })
-                }} //you should set the values directly
+                }} 
               />
 
               <div className=''>
@@ -178,17 +171,13 @@ export default function Home() {
                           onClick={(e) => handleDelete(e)}
                           startIcon={<DeleteIcon />}
                         >
-                          {/* <DeleteIcon onClick={(e) => handleDelete(e)} /> */}
                           Delete
-                          {/* <DeleteForeverIcon onClick={(e) => handleDelete(e)} /> */}
                         </div>
                         <div
-                          // onClick={(e) => handleEditClick(e)}
                           className=''
                           id={item.id}
                         >
-                          {/* onClick={() => handleEditClick(item.product_id)} */}
-                          {/* Edit */}
+                          
                           <EditIcon onClick={(e) => handleEditClick(e)} />
                         </div>
                       </IconButton>
@@ -200,7 +189,6 @@ export default function Home() {
           </div>
         )}
 
-        {/* <Pagination count={10} color='primary' /> */}
       </Grid>
     </div>
   )
